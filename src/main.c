@@ -1,7 +1,7 @@
 #include "sys.h"
 #include "delay.h"
-#include "usart.h"
 #include "led.h"
+#include "exti.h"
 
 
 //ÅÜÂíµÆÊµÑé -¿âº¯Êý°æ±¾
@@ -11,7 +11,8 @@
 int main(void)
 { 
  
-	delay_init(168);		  //³õÊ¼»¯ÑÓÊ±º¯Êý
+	delay_init(168);		  //³õÊ¼»¯ÑÓÊ±º¯Ê
+	EXTIX_Init();       //
 	LED_Init();		        //³õÊ¼»¯LED¶Ë¿Ú
 	
 	while(1){
