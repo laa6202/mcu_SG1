@@ -12,5 +12,11 @@
 #define LED0 PAout(6)	// D2
 #define LED1 PAout(7)	// D3	 
 
-void LED_Init(void);//初始化		 				    
+void LED_Init(void);//初始化		 
+
+void D2_On(void);
+void D2_Off(void);
+void D3_On(void);
+void D3_Off(void);
+
 #endif

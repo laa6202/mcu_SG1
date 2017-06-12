@@ -9,6 +9,7 @@
 ".\objects\stm32f4xx_spi.o"
 ".\objects\stm32f4xx_syscfg.o"
 ".\objects\delay.o"
+".\objects\sys.o"
 ".\objects\main.o"
 ".\objects\led.o"
 --strict --scatter ".\Objects\SG1.sct"

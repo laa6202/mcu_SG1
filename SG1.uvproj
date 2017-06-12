@@ -372,9 +372,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define></Define>
+              <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CORE;.\src\hmi;.\FWLIB\inc</IncludePath>
+              <IncludePath>.\CORE;.\src\hmi;.\src;.\FWLIB\inc;.\SYSTEM\delay;.\SYSTEM\sys;.\SYSTEM\usart</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -477,16 +477,6 @@
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\SYSTEM\delay\delay.c</FilePath>
-            </File>
-            <File>
-              <FileName>sys.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SYSTEM\sys\sys.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SYSTEM\usart\usart.c</FilePath>
             </File>
           </Files>
         </Group>
