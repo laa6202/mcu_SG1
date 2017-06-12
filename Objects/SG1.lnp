@@ -1,0 +1,17 @@
+--cpu=Cortex-M4.fp
+".\objects\startup_stm32f40_41xxx.o"
+".\objects\stm32f4xx_it.o"
+".\objects\system_stm32f4xx.o"
+".\objects\misc.o"
+".\objects\stm32f4xx_fsmc.o"
+".\objects\stm32f4xx_gpio.o"
+".\objects\stm32f4xx_rcc.o"
+".\objects\stm32f4xx_spi.o"
+".\objects\stm32f4xx_syscfg.o"
+".\objects\delay.o"
+".\objects\main.o"
+".\objects\led.o"
+--strict --scatter ".\Objects\SG1.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\SG1.map" -o .\Objects\SG1.axf
