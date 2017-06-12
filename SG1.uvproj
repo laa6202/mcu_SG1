@@ -468,6 +468,11 @@
               <FileType>1</FileType>
               <FilePath>.\FWLIB\src\stm32f4xx_syscfg.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWLIB\src\stm32f4xx_exti.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -477,6 +482,11 @@
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\SYSTEM\delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SYSTEM\sys\sys.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -492,6 +502,11 @@
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\hmi\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\exti.c</FilePath>
             </File>
           </Files>
         </Group>
