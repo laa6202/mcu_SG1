@@ -508,6 +508,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\exti.c</FilePath>
             </File>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\hmi\gpio.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
