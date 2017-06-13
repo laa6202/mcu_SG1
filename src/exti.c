@@ -31,7 +31,8 @@ void EXTIX_Init(void)
 	EXTI_InitStructure.EXTI_Line =  EXTI_Line3 ;
 	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;//中断事件
 	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling; //下降沿触发
-	EXTI_InitStructure.EXTI_LineCmd = ENABLE;//中断线使能
+	//EXTI_InitStructure.EXTI_LineCmd = ENABLE;//中断线使能
+	EXTI_InitStructure.EXTI_LineCmd = DISABLE;//中断线不使能
 	EXTI_Init(&EXTI_InitStructure);//配置
 	
 	

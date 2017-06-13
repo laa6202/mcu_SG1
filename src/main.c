@@ -4,6 +4,7 @@
 #include "gpio.h"
 #include "exti.h"
 #include "uart.h"
+#include "timer.h"
 
 
 
@@ -15,6 +16,7 @@ int main(void)
 	LED_Init();		        //³õÊ¼»¯LED¶Ë¿Ú
 	GPIO_PB_Init();
 	uart_init(115200);
+	TIM3_Int_Init(8000,8400-1);		//0.8s
 	
 	while(1){
 		GPIO_ResetBits(GPIOB,GPIO_Pin_13);
@@ -23,7 +25,7 @@ int main(void)
 		GPIO_SetBits(GPIOB,GPIO_Pin_13);
 		D2_Off();
 		delay_ms(400);
-		printf("abcs");
+		//printf("abcs");
 	}
 }
 
