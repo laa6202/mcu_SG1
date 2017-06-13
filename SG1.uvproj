@@ -374,7 +374,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CORE;.\src\hmi;.\src;.\FWLIB\inc;.\SYSTEM\delay;.\SYSTEM\sys</IncludePath>
+              <IncludePath>.\CORE;.\src\hmi;.\src;.\FWLIB\inc;.\SYSTEM\delay;.\SYSTEM\sys;.\src\rng</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -483,6 +483,11 @@
               <FileType>1</FileType>
               <FilePath>.\FWLIB\src\stm32f4xx_tim.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_rng.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWLIB\src\stm32f4xx_rng.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -532,6 +537,11 @@
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>rng.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\rng\rng.c</FilePath>
             </File>
           </Files>
         </Group>

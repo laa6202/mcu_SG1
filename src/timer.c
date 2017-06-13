@@ -2,7 +2,7 @@
 #include "uart.h"
 #include "led.h"
 #include "delay.h"
-
+#include "rng.h"
 
 
 
@@ -40,16 +40,12 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 //定时器3中断服务函数
 void TIM3_IRQHandler(void)
 {
+	u32 random;
 	if(TIM_GetITStatus(TIM3,TIM_IT_Update)==SET) //溢出中断
 	{
-		printf("t");
-		printf("m");
-		for(int i=0;i<2;i++){
-			D3_On();
-			delay_ms(50);
-			D3_Off();
-			delay_ms(50);		
-		}
+		printf("rng:");		
+		random = RNG_Get_RandomNum();
+		printf("%d",random%100);
 	}
 	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);  //清除中断标志位
 }

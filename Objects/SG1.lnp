@@ -11,6 +11,7 @@
 ".\objects\stm32f4xx_exti.o"
 ".\objects\stm32f4xx_usart.o"
 ".\objects\stm32f4xx_tim.o"
+".\objects\stm32f4xx_rng.o"
 ".\objects\delay.o"
 ".\objects\sys.o"
 ".\objects\main.o"
@@ -19,6 +20,7 @@
 ".\objects\gpio.o"
 ".\objects\uart.o"
 ".\objects\timer.o"
+".\objects\rng.o"
 --library_type=microlib --strict --scatter ".\Objects\SG1.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
