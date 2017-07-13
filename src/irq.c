@@ -16,6 +16,7 @@ u32 befor = 0;
 u32 now   = 0;
 u32 diff  = 0;
 
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -27,7 +28,7 @@ void TIM3_IRQHandler(void)
 	if(TIM_GetITStatus(TIM3,TIM_IT_Update)==SET) //溢出中断
 	{
 		u32 pwm_data = get_pwm();
-		u32 pwm_cycle = pwm_data * 0x50000 / 100;
+		u32 pwm_cycle = pwm_data * 0xA000 / 100;	//0xA410 = 2ms = 42000cycle
 		SysTick->LOAD = pwm_cycle;
 		SysTick->CTRL = 0x3;
 		D3_On();
@@ -35,10 +36,12 @@ void TIM3_IRQHandler(void)
 	
 		
 		tim3_count++;
-		if((tim3_count % 100) == 1)
+		if((tim3_count % 1000) == 1)
 			D2_On();
-		if((tim3_count % 100) == 51)
+		if((tim3_count % 1000) == 501)
 			D2_Off();
+		if(tim3_count % 50 == 1)
+			inc_pwm();
 	}
 	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);  //清除中断标志位
 }

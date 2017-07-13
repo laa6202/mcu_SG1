@@ -21,4 +21,10 @@ u32 get_pwm(void){
 	return pwm_data;
 }
 
+void inc_pwm(void){
+	pwm_data++;
+	if(pwm_data == 101)
+		pwm_data = 1;
+}
+
 

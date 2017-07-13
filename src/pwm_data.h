@@ -14,6 +14,6 @@
 /* Exported functions ------------------------------------------------------- */
 void set_pwm(u32 data);
 u32 get_pwm(void);
-
+void inc_pwm(void);
 
 #endif
