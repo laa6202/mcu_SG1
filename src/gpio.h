@@ -1,8 +1,8 @@
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __IRQ_H
-#define __IRQ_H
 
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __GPIO_H
+#define __GPIO_H
 
 
 /* Includes ------------------------------------------------------------------*/
@@ -13,6 +13,8 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void act_SysTickFlag(void);
+void GPIO_PWM_Init(void);//≥ı ºªØ		 
+void GPIO_PWN_H(void);
+void GPIO_PWN_L(void);
 
 #endif

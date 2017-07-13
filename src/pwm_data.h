@@ -1,7 +1,6 @@
-
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __IRQ_H
-#define __IRQ_H
+#ifndef __PWM_DATA_H
+#define __PWM_DATA_H
 
 
 
@@ -13,6 +12,8 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void act_SysTickFlag(void);
+void set_pwm(u32 data);
+u32 get_pwm(void);
+
 
 #endif

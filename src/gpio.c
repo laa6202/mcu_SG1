@@ -1,47 +1,35 @@
 
-
-
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
-#include "led.h"
-#include "timer.h"
-#include "gpio.h"
-#include "pwm_data.h"
+#include "gpio.h" 
 
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-
-
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
 
-int main(void)
-{ 
- 
-	
-	LED_Init();		        //初始化LED端口
-	GPIO_PWM_Init();
-	TIM3_Int_Init(9999,167);		//20ms
+void GPIO_PWM_Init(void)
+{    	 
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);//使能GPIOA时钟
+	GPIOE->MODER |= 0x55;
 
-		SysTick->LOAD = 0x10000;
-		SysTick->CTRL = 0x3;
-	
-	
-	while(1){
-
-		set_pwm(100);	//for debug
+}
 
 
-	}
+void GPIO_PWN_H(void){
+	GPIOE->ODR |= 0xf;
+}
+
+
+void GPIO_PWN_L(void){
+	GPIOE->ODR &= 0xfff0;
 }
 
 
 
- 
 
 
 

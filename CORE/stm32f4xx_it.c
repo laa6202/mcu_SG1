@@ -29,7 +29,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
- 
+#include "irq.h" 
 
 /** @addtogroup Template_Project
   * @{
@@ -141,7 +141,9 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
- 
+	act_SysTickFlag();
+
+	
 }
 
 /******************************************************************************/
