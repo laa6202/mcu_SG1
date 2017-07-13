@@ -1,6 +1,5 @@
 #include "timer.h"
-#include "led.h"
-#include "rng.h"
+
 
 
 
@@ -33,17 +32,4 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 	
-}
-
-//定时器3中断服务函数
-void TIM3_IRQHandler(void)
-{
-	u32 random;
-	if(TIM_GetITStatus(TIM3,TIM_IT_Update)==SET) //溢出中断
-	{
-
-		random = RNG_Get_RandomNum();
-
-	}
-	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);  //清除中断标志位
 }
