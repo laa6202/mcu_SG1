@@ -1,7 +1,5 @@
 #include "timer.h"
-#include "uart.h"
 #include "led.h"
-#include "delay.h"
 #include "rng.h"
 
 
@@ -43,9 +41,9 @@ void TIM3_IRQHandler(void)
 	u32 random;
 	if(TIM_GetITStatus(TIM3,TIM_IT_Update)==SET) //溢出中断
 	{
-		printf("rng:");		
+
 		random = RNG_Get_RandomNum();
-		printf("%d",random%100);
+
 	}
 	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);  //清除中断标志位
 }

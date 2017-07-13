@@ -374,7 +374,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CORE;.\src\hmi;.\src;.\FWLIB\inc;.\SYSTEM\delay;.\SYSTEM\sys;.\src\rng</IncludePath>
+              <IncludePath>.\CORE;.\src\hmi;.\src;.\FWLIB\inc;.\src\rng</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -439,11 +439,6 @@
           <GroupName>lib</GroupName>
           <Files>
             <File>
-              <FileName>misc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\misc.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_fsmc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FWLIB\src\stm32f4xx_fsmc.c</FilePath>
@@ -488,22 +483,15 @@
               <FileType>1</FileType>
               <FilePath>.\FWLIB\src\stm32f4xx_rng.c</FilePath>
             </File>
+            <File>
+              <FileName>misc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWLIB\src\misc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>system</GroupName>
-          <Files>
-            <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SYSTEM\delay\delay.c</FilePath>
-            </File>
-            <File>
-              <FileName>sys.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SYSTEM\sys\sys.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>src</GroupName>
@@ -519,19 +507,9 @@
               <FilePath>.\src\hmi\led.c</FilePath>
             </File>
             <File>
-              <FileName>exti.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\exti.c</FilePath>
-            </File>
-            <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\hmi\gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\hmi\uart.c</FilePath>
             </File>
             <File>
               <FileName>timer.c</FileName>

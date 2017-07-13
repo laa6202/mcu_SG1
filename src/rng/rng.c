@@ -1,5 +1,6 @@
+
 #include "rng.h"
-#include "delay.h"
+
 
 
 
@@ -15,7 +16,6 @@ u8 RNG_Init(void)
 	while(RNG_GetFlagStatus(RNG_FLAG_DRDY)==RESET&&retry<10000)	//等待随机数就绪
 	{
 		retry++;
-		delay_us(100);
 	}
 	if(retry>=10000)return 1;//随机数产生器工作不正常
 	return 0;
