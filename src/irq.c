@@ -40,8 +40,7 @@ void TIM3_IRQHandler(void)
 			D2_On();
 		if((tim3_count % 1000) == 501)
 			D2_Off();
-	//	if(tim3_count % 50 == 1)
-	//		inc_pwm();
+
 	}
 	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);  //清除中断标志位
 }

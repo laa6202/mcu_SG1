@@ -13,6 +13,7 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 void set_pwm(u32 data);
+void set_pwm_f32(float data);
 u32 get_pwm(void);
 void inc_pwm(void);
 

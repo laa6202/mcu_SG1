@@ -7,6 +7,9 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+u16 ad_min = 3000;
+u16 ad_max = 4096;
+float ad_scale = 0.1f;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -82,9 +85,21 @@ u16 Get_Adc_Average(u8 ch,u8 times)
 
 
 
+float ad_step1(u16 ad_in){
+	float ad_out;
+	if(ad_in < ad_min)
+		ad_in = ad_min;
+	if(ad_in > ad_max)
+		ad_in = ad_max;
+	ad_out = (ad_in - ad_min) * 1.0f / (ad_max- ad_min) ;
+	return ad_out;
+}
 
 
-
-
-
+float ad_step2(float ad_in){
+	float ad_out;
+	ad_out = ad_in * ad_scale;
+	return ad_out;
+	
+}
 
