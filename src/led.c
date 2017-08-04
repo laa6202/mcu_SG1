@@ -19,8 +19,8 @@
 void LED_Init(void)
 {    	 
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-	GPIOA->MODER |= (0x01 << 12);
-	GPIOA->MODER |= (0x01 << 14);
+	GPIOA->MODER |= (0x01 << 12);		//PA6
+	GPIOA->MODER |= (0x01 << 14);		//PA7
 }
 
 

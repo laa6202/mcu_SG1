@@ -1,0 +1,3 @@
+PA5		Ä£ÄגÊהÈכ
+PE0		PWMÊה³צ
+PA6/PA7		LED
