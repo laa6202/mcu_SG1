@@ -1,22 +1,20 @@
 
   
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __MAIN_H
-#define __MAIN_H
+#ifndef __EXTI_KEY_H
+#define __EXTI_KEY_H
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
-#include "stm32f4xx_it.h"
-#include "led.h"
-#include "rcc_modify.h"
-#include "speaker.h"
-#include "exti_key.h"
+
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+int init_exti_key(void);
 
-#endif /* __MAIN_H */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+#endif /* __EXTI_KEY_H */
+
+

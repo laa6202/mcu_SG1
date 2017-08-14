@@ -15,7 +15,8 @@
 //hope HSE is 25MHz,but the actual HSE is 8MHz,now modify the RCC PLLM config
 int rcc_modify(void)
 { 
-	RCC->CFGR &= 0xffffffd;		//sw1 = 0
+	RCC->CFGR &= (~RCC_CFGR_SW_HSE);	//0xffffffd;		//sw1 = 0 HSI
+
 	while((RCC->CFGR & RCC_CFGR_SWS_1) == RCC_CFGR_SWS_1);	//wait SW1=0
 	
 	RCC->CR &= (~RCC_CR_PLLON);		//PLL OFF
@@ -23,7 +24,7 @@ int rcc_modify(void)
 	RCC->PLLCFGR |= 0x8;					//PLLM = 8
 	RCC->CR |= RCC_CR_PLLON;			//PLL ON
 	while((RCC->CR & RCC_CR_PLLRDY) != RCC_CR_PLLRDY);	//wait PLL rdy
-	RCC->CFGR |= 1<<1;			//sw1 = 1
+	RCC->CFGR |= RCC_CFGR_SW_HSE;			//sw1 = 1	 HSE
 	while((RCC->CFGR & RCC_CFGR_SWS_1) != RCC_CFGR_SWS_1) ;	//wait SW1 = 1;
 	
 	

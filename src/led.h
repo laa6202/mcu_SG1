@@ -1,22 +1,23 @@
 
-  
+
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __MAIN_H
-#define __MAIN_H
+#ifndef __LED_H
+#define __LED_H
+
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
-#include "led.h"
-#include "rcc_modify.h"
-#include "speaker.h"
-#include "exti_key.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+void LED_Init(void);//≥ı ºªØ		 
+void D2_On(void);
+void D2_Off(void);
+void D3_On(void);
+void D3_Off(void);
 
-#endif /* __MAIN_H */
+#endif
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

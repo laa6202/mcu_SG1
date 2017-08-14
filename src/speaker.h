@@ -1,22 +1,25 @@
 
   
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __MAIN_H
-#define __MAIN_H
+#ifndef __SPEAKER_H
+#define __SPEAKER_H
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
-#include "stm32f4xx_it.h"
-#include "led.h"
-#include "rcc_modify.h"
-#include "speaker.h"
-#include "exti_key.h"
+
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-#endif /* __MAIN_H */
+int init_speaker(void );
+int speaker_putch(char c);
+int speaker_putstr(char * str, u16 len);
+int speak_content(int id);
+char calcXOR(char * content,int len);
+int calcFrmLen(char * content,int len);
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+#endif /* __SPEAKER_H */
+
+

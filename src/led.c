@@ -2,7 +2,7 @@
 
 
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include "led.h" 
 
 
 /* Private typedef -----------------------------------------------------------*/
@@ -15,23 +15,38 @@
 /* Private functions ---------------------------------------------------------*/
 
 
-int main(void)
-{ 
-	LED_Init();
-	rcc_modify();
-	init_speaker();
-	init_exti_key();
-	
-	while(1){
-	
-	}
-	
 
+void LED_Init(void)
+{    	 
+  RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+	GPIOA->MODER |= (0x01 << 12);		//PA6
+	GPIOA->MODER |= (0x01 << 14);		//PA7
+	D2_Off();
+	D3_On();
+}
+
+
+void D2_On(void){
+	GPIOA->ODR &= 0xffbf;
+}
+
+
+void D2_Off(void){
+	GPIOA->ODR |= (0x1 << 6);
+}
+
+
+void D3_On(void){
+	GPIOA->ODR &= 0xff7f;
+}
+
+
+void D3_Off(void){
+	GPIOA->ODR |= (0x1 << 7);
 }
 
 
 
- 
 
 
 
