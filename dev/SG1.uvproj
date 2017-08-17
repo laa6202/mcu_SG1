@@ -473,6 +473,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\led.c</FilePath>
             </File>
+            <File>
+              <FileName>us100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\us100.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

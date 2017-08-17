@@ -19,6 +19,7 @@ int speaker_putstr(char * str, u16 len);
 int speak_content(int id);
 char calcXOR(char * content,int len);
 int calcFrmLen(char * content,int len);
+int speak_h3(int h3);
 
 #endif /* __SPEAKER_H */
 

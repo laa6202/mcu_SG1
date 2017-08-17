@@ -1,7 +1,6 @@
 
 /* Includes ------------------------------------------------------------------*/
-#include "speaker.h"
-#include "speaker_content.h"
+#include "us100.h"
 #include "led.h"
 
 
@@ -9,46 +8,80 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-u8 rx_data;
-u8 rx_vld;
-char a[21];
+char us100_dh;
+char us100_dl;
+char us100_vld;
+int h3;
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-int init_speaker(void){
-	//using uart2 PA2/PA3 to speaker control
-	RCC->APB1ENR |= RCC_APB1ENR_USART2EN;		//	168MHz/4 = 42MHz
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;		//	168MHz
+int init_us100(void){
+	//using uart6 PC6/PC7 to speaker control
+	RCC->APB2ENR |= RCC_APB2ENR_USART6EN;		//	168MHz/2 = 84MHz
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;		//	168MHz
 	
-	NVIC_EnableIRQ(USART2_IRQn);
+	NVIC_EnableIRQ(USART6_IRQn);
 	
-	GPIOA->MODER |= 0x2 << 4;  //PA2 -- UART1_TX
-	GPIOA->MODER |= 0x2 << 6;  //PA3 -- UART1_RX
-	GPIOA->AFR[0] |= 0x7 << 8;		//PA2-AF7
-	GPIOA->AFR[0] |= 0x7 << 12;		//PA3-AF7
+	GPIOC->MODER |= 0x2 << 12;  //PC6 -- UART6_TX
+	GPIOC->MODER |= 0x2 << 14;  //PC7 -- UART6_RX
+	GPIOC->AFR[0] |= 0x8 << 24;		//PC6-AF8
+	GPIOC->AFR[0] |= 0x80000000;//0x8 << 28;		//PC7-AF8
 	
-	//freq div = 42000000 / (16 * 9600) = 273.4375
-	USART2->BRR |= 273 << 4;		
-	USART2->BRR |= 0x7;
+	//freq div = 84000000 / (16 * 9600) = 546.875
+	USART6->BRR |= 546 << 4;		
+	USART6->BRR |= 14;
 
-	USART2->CR1 |= USART_CR1_RXNEIE;
+	USART6->CR1 |= USART_CR1_RXNEIE;
 	
-	USART2->CR1 |= USART_CR1_TE | USART_CR1_RE;
-	USART2->CR1 |= USART_CR1_UE;
+	USART6->CR1 |= USART_CR1_TE | USART_CR1_RE;
+	USART6->CR1 |= USART_CR1_UE;
 	
-	rx_vld = 0;
+	us100_vld =0;
 	
 	return 0;
 }
 
 
-int speaker_putch(char c){
-	while((USART2->SR & USART_SR_TC)!= USART_SR_TC);	
-	USART2->DR = c;
+void USART6_IRQHandler(void){
+	D2_On();
+	if((USART6->SR & USART_SR_RXNE) == USART_SR_RXNE){
+		if(us100_vld == 0)
+			us100_dh = USART6->DR;	
+		else 
+			us100_dl = USART6->DR;	
+		us100_vld = us100_vld + 1;
+		if(us100_vld == 2)
+			h3 = us100_dh * 256 + us100_dl;
+	}
+	D2_Off();
+}
+
+
+int us100_putch(char c){
+	us100_vld = 0;
+	while((USART6->SR & USART_SR_TC)!= USART_SR_TC);	
+	USART6->DR = c;
 	
 	return 0;
 }
+
+
+int us100_measure(void){
+	us100_putch(0x55);
+	__nop();
+	while(us100_vld != 2) 
+		__nop();;
+	return h3;
+}
+
+
+int get_h3(void){
+	return h3;
+}
+
+/*
+
 
 int speaker_putstr(char * str, u16 len){
 	for(int i=0;i<len;i++)
@@ -86,14 +119,7 @@ int speak_content(int id){
 }
 
 
-void USART2_IRQHandler(void){
-	D2_On();
-	if((USART2->SR & USART_SR_RXNE) == USART_SR_RXNE){
-		rx_data = USART2->DR;	
-		rx_vld = 1;
-	}
-	D2_Off();
-}
+
 
 
 int check_speak_stat(void){
@@ -130,25 +156,6 @@ int calcFrmLen(char * content,int len){
 	return frmLen;
 	
 }
+*/
 
 
-int speak_h3(int h3){
-	int height = h3 /10;
-	rx_vld = 0;
-	int len;
-	len = sizeof(content_h3);
-	int h3_100 = height/100;
-	int h3_10 = (height -100 * h3_100) / 10;
-	int h3_1  = (height -100 * h3_100) % 10;
-	content_h3[10] += h3_100;
-	content_h3[12] += h3_10;
-	content_h3[14] += h3_1;
-	calcFrmLen(content_h3,len);
-	calcXOR(content_h3,len);
-	speaker_putstr(content_h3,len);
-	content_h3[10] -= h3_100;
-	content_h3[12] -= h3_10;
-	content_h3[14] -= h3_1;
-	
-	return 0;
-}

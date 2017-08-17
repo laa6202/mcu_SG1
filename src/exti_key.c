@@ -3,12 +3,15 @@
 #include "exti_key.h"
 #include "led.h"
 #include "speaker.h"
+#include "us100.h"
 
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+int measure_now;
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -46,7 +49,9 @@ int init_exti_key(void){
 void EXTI2_IRQHandler(void){
 	EXTI->IMR &= (~ EXTI_IMR_MR2);
 	__nop();
-	speak_content(2);
+	int h3 = get_h3();
+//	speak_h3(h3);
+	measure_now = 1;
 	EXTI->PR |= 0x1 <<2;		//clear pending
 	EXTI->IMR |= EXTI_IMR_MR2;
 }
@@ -68,4 +73,13 @@ void EXTI4_IRQHandler(void){
 	EXTI->IMR |= EXTI_IMR_MR4;
 }
 
+
+int get_measure_now(void){
+	return measure_now;
+}
+	
+int set_measure_now(int flag){
+	measure_now = flag;
+	return 0;
+}
 
