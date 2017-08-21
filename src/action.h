@@ -1,21 +1,19 @@
 
-  
+
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __EXTI_KEY_H
-#define __EXTI_KEY_H
+#ifndef __ACTION_H
+#define __ACTION_H
+
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
-
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-int init_exti_key(void);
+int action_speak(void);
 
 
-	
-#endif /* __EXTI_KEY_H */
-
+#endif
 
