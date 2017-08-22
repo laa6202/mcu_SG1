@@ -5,6 +5,7 @@
 #include "action.h" 
 #include "global.h"
 #include "speaker.h"
+#include "us100.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -22,6 +23,14 @@ int action_speak(){
 	return 0;
 }
 
+
+int action_height(){
+	int height;
+	us100_measure();
+	height = get_height();
+	set_height_mm(height);
+	return 0;
+}
 
 
 

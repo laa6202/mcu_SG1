@@ -15,7 +15,7 @@
 
 int init_us100(void );
 int us100_measure(void);
-int get_h3(void);
+int get_height(void);
 
 #endif /* __US100_H */
 

@@ -21,6 +21,7 @@ int set_test(int state);
 int get_main(void);
 int get_test(void);
 int get_height_mm(void);
+int set_height_mm(int height);
 int get_weight_100g(void);
 
 

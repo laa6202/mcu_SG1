@@ -41,6 +41,16 @@ int get_height_mm(void){
 	return height_mm;
 }
 
+int set_height_mm(int height){
+	if(height > 9999)
+		height_mm = 9999;
+	else if(height <= 100)
+		height_mm = 100;
+	else 
+		height_mm = height;
+	return height_mm;
+}
+
 int get_weight_100g(void){
 	return wieght_100g;
 }

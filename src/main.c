@@ -39,7 +39,7 @@ int main(void)
 				set_main(S_HEIGHT);
 				break;
 			case S_HEIGHT:
-				__nop();
+				action_height();
 				set_main(S_CALC);			
 				break;
 			case S_CALC:

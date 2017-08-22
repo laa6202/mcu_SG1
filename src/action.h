@@ -13,7 +13,7 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 int action_speak(void);
-
+int action_height(void);
 
 #endif
 

@@ -140,7 +140,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>??4O??es</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -184,6 +183,11 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>\\SG1\../src/global.c\count,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>height_mm,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
