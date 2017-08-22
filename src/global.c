@@ -11,8 +11,8 @@
 int st_main;
 int st_test;
 int count;
-int height_mm;
-int wieght_g;
+int height_mm = 1720;
+int wieght_100g = 950;
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -39,5 +39,9 @@ int get_test(void){
 
 int get_height_mm(void){
 	return height_mm;
+}
+
+int get_weight_100g(void){
+	return wieght_100g;
 }
 

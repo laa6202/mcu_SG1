@@ -21,6 +21,7 @@ int set_test(int state);
 int get_main(void);
 int get_test(void);
 int get_height_mm(void);
+int get_weight_100g(void);
 
 
 #endif /* __GLOBAL_H */

@@ -16,8 +16,9 @@
 
 int action_speak(){
 	int height_mm = get_height_mm();
-	speak_h3(height_mm);
-	
+	int weight_100g = get_weight_100g();
+	speak_h3w2(height_mm,weight_100g);
+	wait_idle();
 	return 0;
 }
 

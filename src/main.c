@@ -50,8 +50,8 @@ int main(void)
 				action_speak();
 				set_main(S_IDLE);
 				break;
-			default :
-				set_main(S_IDLE);
+			default : ;
+
 			
 		}
 	}

@@ -21,6 +21,9 @@ int init_speaker(void){
 	RCC->APB1ENR |= RCC_APB1ENR_USART2EN;		//	168MHz/4 = 42MHz
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;		//	168MHz
 	
+	GPIOA->MODER &= 0xfffffff3;		//PA1 input
+	GPIOA->PUPDR |= 0x2 << 2;			//PA1 pull down
+	
 	NVIC_EnableIRQ(USART2_IRQn);
 	
 	GPIOA->MODER |= 0x2 << 4;  //PA2 -- UART1_TX
@@ -42,6 +45,25 @@ int init_speaker(void){
 	return 0;
 }
 
+
+int check_busy(void){
+	int busy = 
+		((GPIOA->IDR & GPIO_IDR_IDR_1) == GPIO_IDR_IDR_1) ? 1 : 0;
+	return busy;
+}
+
+int check_stat(void){
+	while(rx_vld == 0) ;	//wait while no respose
+	return rx_data;
+}
+
+int wait_idle(void){
+	int stat;
+	do{
+		stat = check_stat();
+	}while (stat != 0x4f);
+	return 0;
+}
 
 int speaker_putch(char c){
 	while((USART2->SR & USART_SR_TC)!= USART_SR_TC);	
@@ -96,22 +118,6 @@ void USART2_IRQHandler(void){
 }
 
 
-int check_speak_stat(void){
-	rx_vld = 0;
-	speaker_putstr(cmd_check,5);
-	while(rx_vld != 1) ;		//wait rx_vld = 1 by IRQ
-	if( rx_data == 0x4F)		//FINISH and IDEL
-		return 0;
-	if( rx_data == 0x4A)		//INIT DONE and IDEL
-		return 0;	
-	if( rx_data == 0x4E)		//BUSY
-		return 2;	
-	if(rx_data == 0x41)			//RX cmd and busy
-		return 1;
-	if(rx_data == 0x45)			//FAILD to rx cmd
-		return -1;
-	return -2;
-}
 
 
 char calcXOR(char * content,int len){
@@ -132,7 +138,7 @@ int calcFrmLen(char * content,int len){
 }
 
 
-int speak_h3(int h3){
+int speak_h3(int h3){		//单位mm
 	int height = h3 /10;
 	rx_vld = 0;
 	int len;
@@ -149,6 +155,58 @@ int speak_h3(int h3){
 	content_h3[10] -= h3_100;
 	content_h3[12] -= h3_10;
 	content_h3[14] -= h3_1;
-	
 	return 0;
 }
+
+
+int speak_w2(int w2){		//单位100g
+	int weight_l = w2 /10;
+	int w2_s = w2 % 10;
+	rx_vld = 0;
+	int len;
+	len = sizeof(content_h3);
+	int w2_10 = (weight_l ) / 10;
+	int w2_1  = (weight_l ) % 10;
+	content_w2[10] += w2_10;
+	content_w2[12] += w2_1;
+	content_w2[16] += w2_s;
+	calcFrmLen(content_w2,len);
+	calcXOR(content_w2,len);
+	speaker_putstr(content_w2,len);
+	content_w2[10] -= w2_10;
+	content_w2[12] -= w2_1;
+	content_w2[16] -= w2_s;
+	return 0;
+}
+
+
+int speak_h3w2(int h3,int w2){		//单位mm
+	int height = h3 /10;
+	int weight_l = w2 /10;
+	int w2_s = w2 % 10;
+	rx_vld = 0;
+	int len;
+	len = sizeof(content_h3w2);
+	int h3_100 = height/100;
+	int h3_10 = (height -100 * h3_100) / 10;
+	int h3_1  = (height -100 * h3_100) % 10;
+	int w2_10 = (weight_l ) / 10;
+	int w2_1  = (weight_l ) % 10;
+	content_h3w2[10] += h3_100;
+	content_h3w2[12] += h3_10;
+	content_h3w2[14] += h3_1;
+	content_h3w2[26] += w2_10;
+	content_h3w2[28] += w2_1;
+	content_h3w2[32] += w2_s;
+	calcFrmLen(content_h3w2,len);
+	calcXOR(content_h3w2,len);
+	speaker_putstr(content_h3w2,len);
+	content_h3w2[10] -= h3_100;
+	content_h3w2[12] -= h3_10;
+	content_h3w2[14] -= h3_1;
+	content_h3w2[26] -= w2_10;
+	content_h3w2[28] -= w2_1;
+	content_h3w2[32] -= w2_s;
+	return 0;
+}
+
