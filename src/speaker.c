@@ -25,6 +25,7 @@ int init_speaker(void){
 	GPIOA->PUPDR |= 0x2 << 2;			//PA1 pull down
 	
 	NVIC_EnableIRQ(USART2_IRQn);
+	NVIC_SetPriority(USART2_IRQn,(5<<1)+1);
 	
 	GPIOA->MODER |= 0x2 << 4;  //PA2 -- UART1_TX
 	GPIOA->MODER |= 0x2 << 6;  //PA3 -- UART1_RX

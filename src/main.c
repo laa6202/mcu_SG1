@@ -17,10 +17,17 @@
 /* Private functions ---------------------------------------------------------*/
 
 
+int core_init(){
+	rcc_modify();									//system clock = 168MHz
+	NVIC_SetPriorityGrouping(4);	//use 3:1 priority
+	return 0;
+}
+
+
 int main(void)
 { 
+	core_init();
 	LED_Init();
-	rcc_modify();
 	init_speaker();
 	init_exti_key();
 	init_us100();
@@ -51,17 +58,12 @@ int main(void)
 				set_main(S_IDLE);
 				break;
 			default : ;
-
-			
-		}
-	}
+		}	//switch
+	}	//while(1)
 	
-
 }
 
 
-
- 
 
 
 

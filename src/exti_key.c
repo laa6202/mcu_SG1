@@ -41,6 +41,9 @@ int init_exti_key(void){
 	NVIC_EnableIRQ(EXTI2_IRQn);
 	NVIC_EnableIRQ(EXTI3_IRQn);
 	NVIC_EnableIRQ(EXTI4_IRQn);
+	NVIC_SetPriority(EXTI2_IRQn,(6<<1) + 1);
+	NVIC_SetPriority(EXTI3_IRQn,(6<<1) + 1);
+	NVIC_SetPriority(EXTI4_IRQn,(6<<1) + 0);
 	
 	return 0;
 }

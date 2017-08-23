@@ -437,13 +437,6 @@
         </Group>
         <Group>
           <GroupName>fwlib</GroupName>
-          <Files>
-            <File>
-              <FileName>misc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\src\misc.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>src</GroupName>
