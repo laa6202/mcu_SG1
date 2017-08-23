@@ -17,9 +17,25 @@
 /* Private functions ---------------------------------------------------------*/
 
 
+int uid_match = 0;
+
+
+int check_uid(){
+	u32 uid[3];
+	uid[0] = (*(volatile uint32_t *)0x1fff7a10);
+	uid[1] = (*(volatile uint32_t *)0x1fff7a14);
+	uid[2] = (*(volatile uint32_t *)0x1fff7a18);
+	if((uid[2] == key2) & (uid[1] == key1)&(uid[0] == key0))
+		uid_match = 1;
+	else
+		uid_match = 0;
+	return 0;
+}
+
 int core_init(){
 	rcc_modify();									//system clock = 168MHz
 	NVIC_SetPriorityGrouping(4);	//use 3:1 priority
+	check_uid();
 	return 0;
 }
 
@@ -34,7 +50,7 @@ int main(void)
 	
 
 
-	while(1){
+	while(uid_match){
 		int st_main = get_main();
 		switch (st_main) {
 			case S_CAP:
@@ -59,7 +75,11 @@ int main(void)
 				break;
 			default : ;
 		}	//switch
-	}	//while(1)
+	}	//while( res_core_init == 0 )
+	
+	while(1){
+		__nop();
+	}	;
 	
 }
 
