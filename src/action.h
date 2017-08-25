@@ -14,6 +14,7 @@
 /* Exported functions ------------------------------------------------------- */
 int action_speak(void);
 int action_height(void);
+int action_raspi(void);
 
 #endif
 
