@@ -13,7 +13,7 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-int init_us100(void );
+int us100_init(void );
 int us100_measure(void);
 int get_height(void);
 

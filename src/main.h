@@ -13,6 +13,7 @@
 #include "speaker.h"
 #include "exti_key.h"
 #include "us100.h"
+#include "raspi.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/

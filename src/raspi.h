@@ -1,8 +1,8 @@
 
   
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __SPEAKER_H
-#define __SPEAKER_H
+#ifndef __RASPI_H
+#define __RASPI_H
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
@@ -12,19 +12,9 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+int raspi_init(void);
 
-int speaker_init(void );
-int check_busy(void);
-int check_stat(void);
-int wait_idle(void);
-int speaker_putch(char c);
-int speaker_putstr(char * str, u16 len);
-int speak_content(int id);
-char calcXOR(char * content,int len);
-int calcFrmLen(char * content,int len);
-int speak_h3(int h3);
-int speak_w2(int w2);
-int speak_h3w2(int h3,int w2);
-#endif /* __SPEAKER_H */
+
+#endif /* __RASPI_H */
 
 

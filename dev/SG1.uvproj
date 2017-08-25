@@ -481,6 +481,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\action.c</FilePath>
             </File>
+            <File>
+              <FileName>raspi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\raspi.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

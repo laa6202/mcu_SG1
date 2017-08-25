@@ -16,7 +16,7 @@ char a[21];
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-int init_speaker(void){
+int speaker_init(void){
 	//using uart2 PA2/PA3 to speaker control
 	RCC->APB1ENR |= RCC_APB1ENR_USART2EN;		//	168MHz/4 = 42MHz
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;		//	168MHz

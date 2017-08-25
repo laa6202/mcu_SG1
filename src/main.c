@@ -44,9 +44,11 @@ int main(void)
 { 
 	core_init();
 	LED_Init();
-	init_speaker();
-	init_exti_key();
-	init_us100();
+	speaker_init();
+	raspi_init();
+	us100_init();
+	exti_key_init();
+
 	
 
 

@@ -16,7 +16,7 @@
 /* Private functions ---------------------------------------------------------*/
 
 
-int init_exti_key(void){
+int exti_key_init(void){
 	//Íâ´¥·¢Ïß - PE2		K0 - PE4		K1 - PE3		press down
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOEEN;
 	GPIOE->MODER |= 0x0 << 4; //PE2 	input

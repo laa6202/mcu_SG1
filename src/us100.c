@@ -16,7 +16,7 @@ int height;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-int init_us100(void){
+int us100_init(void){
 	//using uart6 PC6/PC7 to speaker control
 	RCC->APB2ENR |= RCC_APB2ENR_USART6EN;		//	168MHz/2 = 84MHz
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;		//	168MHz
