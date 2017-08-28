@@ -46,15 +46,16 @@ int action_raspi(){
 		case 0xaa: 	
 			spi_send = 0x55;
 			break;
-		case 0x24:
-			spi_send = write_regs(0,0);
+		case 0x57:
+			spi_send = write_regs(spi_recv[1],spi_recv[2],spi_recv[3]);
 			break;
-		case 0x49:
-			spi_send = read_regs(0);
+		case 0x52:
+			spi_send = read_regs(spi_recv[1],spi_recv[2]);
 			break;
 		default : ;
 	}
 	set_spi_send(spi_send);
 	return 0;
 }
+
 

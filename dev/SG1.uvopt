@@ -140,7 +140,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>lIzlJz?鈙</Name>
+          <Name>渟?渢??js</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -178,22 +178,22 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>st_main</ItemText>
+          <ItemText>cnt_data,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>cnt_data,0x0A</ItemText>
+          <ItemText>spi_recv</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>spi_recv</ItemText>
+          <ItemText>spi_send</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>spi_send</ItemText>
+          <ItemText>debug</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
