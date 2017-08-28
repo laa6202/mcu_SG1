@@ -55,3 +55,13 @@ int get_weight_100g(void){
 	return wieght_100g;
 }
 
+
+u8 read_regs(u16 addr){
+	
+	return 44;
+};
+
+u8 write_regs(u16 addr, u8 data){
+	return 80;
+}
+

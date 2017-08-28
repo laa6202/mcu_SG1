@@ -5,6 +5,8 @@
 #define __GLOBAL_H
 
 /* Includes ------------------------------------------------------------------*/
+#include "stm32f4xx.h"
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
@@ -24,7 +26,8 @@ int get_height_mm(void);
 int set_height_mm(int height);
 int get_weight_100g(void);
 
-
+u8 read_regs(u16 addr);
+u8 write_regs(u16 addr, u8 data);
 #endif /* __GLOBAL_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

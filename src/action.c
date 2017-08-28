@@ -42,15 +42,19 @@ int action_raspi(){
 	switch(spi_recv[0]){
 		case 0x55: 	
 			spi_send = 0xaa;
-			set_spi_send(spi_send);
 			break;
 		case 0xaa: 	
 			spi_send = 0x55;
-			set_spi_send(spi_send);
+			break;
+		case 0x24:
+			spi_send = write_regs(0,0);
+			break;
+		case 0x49:
+			spi_send = read_regs(0);
 			break;
 		default : ;
 	}
-	
+	set_spi_send(spi_send);
 	return 0;
 }
 
