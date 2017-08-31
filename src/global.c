@@ -8,8 +8,8 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-int st_main;
-int st_test;
+u8 st_main;
+u8 st_test;
 int count;
 int height_mm = 1720;
 int wieght_100g = 950;
@@ -19,7 +19,7 @@ u8 debug[4];
 /* Private functions ---------------------------------------------------------*/
 
 int set_main(int state){
-	st_main = state;
+	st_main = (u8)state;
 	if(state != S_IDLE)
 		count ++;
 	return 0;
@@ -82,12 +82,20 @@ u8 write_regs(u8 addr_h,u8 addr_l, u8 data){
 
 
 u8 get_stat_regs(u8 addr_l){
-	
-	return 0;
+	u8 res;
+	switch (addr_l){
+		case(0x8) : res = st_main;
+		default :res = 0;
+	}
+	return res;
 }
 u8 set_stat_regs(u8 addr_l,u8 data){
-	
-	return 0;
+	u8 res;
+	switch (addr_l){
+		case(0x8) : st_main = data;
+		default :res = 0x4F;
+	}	
+	return res;
 }
 
 u8 get_debug_regs(u8 addr_l){
