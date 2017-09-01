@@ -7,6 +7,7 @@
 #include "action.h"
 
 
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -17,7 +18,7 @@
 /* Private functions ---------------------------------------------------------*/
 
 
-int uid_match = 0;
+int uid_match =0;
 
 
 int check_uid(){
@@ -25,7 +26,7 @@ int check_uid(){
 	uid[0] = (*(volatile uint32_t *)0x1fff7a10);
 	uid[1] = (*(volatile uint32_t *)0x1fff7a14);
 	uid[2] = (*(volatile uint32_t *)0x1fff7a18);
-	if((uid[2] == key2) & (uid[1] == key1)&(uid[0] == key0))
+	if((uid[2] == get_key(2)) & (uid[1] == get_key(1))&(uid[0] == get_key(0)))
 		uid_match = 1;
 	else
 		uid_match = 0;
@@ -42,6 +43,7 @@ int core_init(){
 
 int main(void)
 { 
+	uid_match = 0;
 	core_init();
 	LED_Init();
 	speaker_init();
@@ -80,6 +82,8 @@ int main(void)
 	}	//while( res_core_init == 0 )
 	
 	while(1){
+		D2_On();
+		D3_On();
 		__nop();
 	}	;
 	

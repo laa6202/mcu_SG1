@@ -25,12 +25,14 @@ int get_test(void);
 int get_height_mm(void);
 int set_height_mm(int height);
 int get_weight_100g(void);
+u32 get_key(int);
 
 u8 read_regs(u8,u8);
 u8 write_regs(u8,u8, u8);
 
 u8 get_stat_regs(u8);
 u8 set_stat_regs(u8,u8);
+u8 get_version_regs(u8);
 u8 get_debug_regs(u8);
 u8 set_debug_regs(u8,u8);
 #endif /* __GLOBAL_H */
