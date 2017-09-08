@@ -9,12 +9,12 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-u8 st_main;
-u8 st_test;
-int count;
+u8 st_main = 0;
+u8 st_test = 0;
+int count = 0;
 int height_mm = 1720;
 int wieght_100g = 950;
-u8 debug[4];
+u8 debug[4] = {0,0,0,0};
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -95,7 +95,7 @@ u8 write_regs(u8 addr_h,u8 addr_l, u8 data){
 }
 
 
-//---------- 00 ------------
+//---------- 00 status regs ------------
 u8 get_stat_regs(u8 addr_l){
 	u8 res;
 	switch (addr_l){
@@ -115,7 +115,7 @@ u8 set_stat_regs(u8 addr_l,u8 data){
 
 //u32 SN 	 = 0x00000002;
 
-//--------- E0 ----------
+//--------- E0 version regs ----------
 u8 get_version_regs(u8 addr_l){
 	u8 res;
 	switch(addr_l){
@@ -141,7 +141,7 @@ u8 get_version_regs(u8 addr_l){
 }
 
 
-//--------- F0 ----------
+//--------- F0 debug regs----------
 u8 get_debug_regs(u8 addr_l){
 	u8 res;
 	switch(addr_l){

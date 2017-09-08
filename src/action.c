@@ -34,6 +34,13 @@ int action_height(){
 }
 
 
+int action_weight(){
+	
+	
+	return 0;
+}
+
+
 int action_raspi(){
 	u8 * spi_recv;
 	u8 spi_send;

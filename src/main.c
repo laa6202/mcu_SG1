@@ -18,10 +18,11 @@
 /* Private functions ---------------------------------------------------------*/
 
 
-int uid_match =0;
+//int uid_match =0;
 
 
 int check_uid(){
+	int uid_match;
 	u32 uid[3];
 	uid[0] = (*(volatile uint32_t *)0x1fff7a10);
 	uid[1] = (*(volatile uint32_t *)0x1fff7a14);
@@ -30,21 +31,22 @@ int check_uid(){
 		uid_match = 1;
 	else
 		uid_match = 0;
-	return 0;
+	return uid_match;
 }
 
 int core_init(){
+	int uid_match;
 	rcc_modify();									//system clock = 168MHz
 	NVIC_SetPriorityGrouping(4);	//use 3:1 priority
-	check_uid();
-	return 0;
+	uid_match = check_uid();
+	return uid_match;
 }
 
 
 int main(void)
 { 
-	uid_match = 0;
-	core_init();
+	int uid_match = 0;
+	uid_match = core_init();
 	LED_Init();
 	speaker_init();
 	raspi_init();
@@ -57,9 +59,11 @@ int main(void)
 	while(uid_match){
 		int st_main = get_main();
 		switch (st_main) {
-			case S_CAP:
+			case S_IDLE:		//use EXTI2_IRQHandler set_main(S_CAP)
 				__nop();
-				set_main(S_WEIGHT);
+				break;
+			case S_CAP:		//use SPI2_IRQHandler -> action_raspi -> write_regs -> write_status(S_WEIGHT)
+				__nop();
 				break;
 			case S_WEIGHT:
 				__nop();
@@ -69,9 +73,8 @@ int main(void)
 				action_height();
 				set_main(S_CALC);			
 				break;
-			case S_CALC:
+			case S_CALC: 	//use SPI2_IRQHandler -> action_raspi -> write_regs -> write_status(S_WEIGHT)
 				__nop();
-				set_main(S_SPEAK);
 				break;
 			case S_SPEAK:
 				action_speak();
@@ -79,7 +82,7 @@ int main(void)
 				break;
 			default : ;
 		}	//switch
-	}	//while( res_core_init == 0 )
+	}	//while( uid_match == 0 )
 	
 	while(1){
 		D2_On();
