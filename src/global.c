@@ -99,7 +99,7 @@ u8 write_regs(u8 addr_h,u8 addr_l, u8 data){
 u8 get_stat_regs(u8 addr_l){
 	u8 res;
 	switch (addr_l){
-		case(0x8) : res = st_main;
+		case(0x8) : res = st_main; break;
 		default :res = 0;
 	}
 	return res;
@@ -107,7 +107,7 @@ u8 get_stat_regs(u8 addr_l){
 u8 set_stat_regs(u8 addr_l,u8 data){
 	u8 res;
 	switch (addr_l){
-		case(0x8) : st_main = data;
+		case(0x8) : st_main = data; break;
 		default :res = 0x4F;
 	}	
 	return res;
