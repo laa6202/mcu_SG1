@@ -140,7 +140,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>茼?茴??5s</Name>
+          <Name>???3s</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -183,17 +183,12 @@
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>spi_recv</ItemText>
+          <ItemText>st_main</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
           <ItemText>spi_send</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>debug</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -299,7 +294,7 @@
       <GroupNumber>3</GroupNumber>
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\src\main.c</PathWithFileName>

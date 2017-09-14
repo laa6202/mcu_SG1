@@ -70,14 +70,14 @@ int main(void)
 				set_main(S_HEIGHT);
 				break;
 			case S_HEIGHT:
-				action_height();
+	//			action_height();
 				set_main(S_CALC);			
 				break;
 			case S_CALC: 	//use SPI2_IRQHandler -> action_raspi -> write_regs -> write_status(S_WEIGHT)
 				__nop();
 				break;
 			case S_SPEAK:
-				action_speak();
+	//			action_speak();
 				set_main(S_IDLE);
 				break;
 			default : ;
